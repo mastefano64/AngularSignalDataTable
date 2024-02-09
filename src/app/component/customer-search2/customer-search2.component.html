@@ -1,0 +1,6 @@
+<mat-form-field>
+  <input matInput [name]="name" [placeholder]="placeholder" [readonly]="readonly"
+       [ngModel]="signalsearch()" (ngModelChange)="signalsearch.set($event)">
+</mat-form-field>
+
+({{ computedsearch() }})

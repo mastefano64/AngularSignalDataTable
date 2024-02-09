@@ -1,0 +1,79 @@
+<div class="contentarea">
+  <div class="row nomargin">
+    <div class="col-md-3">
+      <app-customer-search2
+        [customersearch]="search"
+        [page]="page"
+        [pagesize]="pagesize"
+        [orderbycolumn]="colord"
+        [orderbydirection]="coldir"
+        [name]="'searchfield'"
+        [placeholder]="'Ricerca anagrafica'"
+        [debouncetime]="500"
+        [minlenght]="3"
+        (custresult)="onSearchResult($event)"
+        #searchfield>
+      </app-customer-search2>
+    </div>
+  </div>
+
+  <div>
+    <ngx-datatable class="material"
+      [columns]="columns"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [rowHeight]="50"
+      [rows]="signalrows()"
+      [count]="signalcount()"
+      [offset]="page"
+      [limit]="pagesize"
+      [externalPaging]="true"
+      [externalSorting]="true"
+      (page)="onPage($event)"
+      (sort)="onSort($event)"
+      #mytable>
+
+      <ngx-datatable-column name="id" [minWidth]="140">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="name" [minWidth]="140">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="surname" [minWidth]="140">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="address" [minWidth]="140">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="cap" [minWidth]="140">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="city" [minWidth]="140">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="province" [minWidth]="140">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="action" [minWidth]="140">
+        <ng-template ngx-datatable-cell-template let-index="rowIndex">
+          action
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</div>
