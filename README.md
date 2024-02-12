@@ -1,27 +1,18 @@
 # AngularSignalDataTable2
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.
+Currently the hot topic in the Angular ecosystem is "Signals". In addition to the examples visible online, I wondered if it would be possible to use them (signals) with one of the many datatables on the internet: I did some tests with ngx-datatable.
 
-## Development server
+I immediately thought that this couldn't work, but to my great surprise I saw that it does. By setting the attributes within the template: [rows]="signalrows()" and count]="signalcount()". The table allows paging and sorting.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+I also made a filter function in the "app-customer-search2" component. The text field is bound to a signal. In order to have the classic functions: filter(), debounceTime(), distinctUntilChanged(), switchMap(); I converted the search field signal into an Observable via the "toObservable()" method.
 
-## Code scaffolding
+Everything seems to be working fine!
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+I created a project that uses modules, so I could disable zone.js (i would like to point out that the project uses Angular
+Material. But if I disable zone.js some things don't work anymore.
 
-## Build
+Maybe because Angular Material like any graphics library (including ngx-datatable) requires zone.js to work.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+I did a similar test using Ag Grid (without Angular Material), everything works but if I disable zone.js the routing no longer works.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Maybe they should release a new generation of libraries specifically designed to work with signals without zone.js.
